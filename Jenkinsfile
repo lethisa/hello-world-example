@@ -45,4 +45,4 @@ pipeline {
   volumes: [
     emptyDirVolume(mountPath: '/var/lib/docker', memory: false)
   ])
-}
+  }}
