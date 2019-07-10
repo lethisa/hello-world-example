@@ -1,7 +1,7 @@
 pipeline {
   agent {
     node {
-      label 'master'
+      label 'label'
     }
 
   }
@@ -14,5 +14,14 @@ pipeline {
 
       }
     }
+    stage('Results') {
+      steps {
+        junit '**/target/surefire-reports/TEST-*.xml'
+        archiveArtifacts 'target/*.jar'
+      }
+    }
+  }
+  environment {
+    label = 'mypod-${UUID.randomUUID().toString()}'
   }
 }
